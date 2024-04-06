@@ -1,0 +1,3 @@
+from app.infrastucture.di.adapters_provider import AdaptersProvider
+from app.infrastucture.di.repositories_provider import RepositoriesProvider
+from app.infrastucture.di.services_provider import ServicesProvider
