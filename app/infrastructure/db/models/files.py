@@ -1,5 +1,6 @@
-from app.infrastucture.db.models import Base
 from sqlalchemy.orm import Mapped
+
+from app.infrastructure.db.models import Base
 
 
 class File(Base):

@@ -1,9 +1,11 @@
-from dishka import Provider, provide, Scope
+from typing import AsyncIterable
+
+from dishka import Provider, Scope, provide
 from dishka.integrations.fastapi import FromDishka
 from sqlalchemy.ext.asyncio import (AsyncEngine, AsyncSession,
                                     async_sessionmaker, create_async_engine,)
-from app.config import settings
-from typing import AsyncIterable
+
+from app.infrastructure.config import settings
 
 
 class AdaptersProvider(Provider):
@@ -14,15 +16,13 @@ class AdaptersProvider(Provider):
 
     @provide(scope=Scope.APP)
     def provide_session_maker(
-            self,
-            engine: FromDishka[AsyncEngine]
+        self, engine: FromDishka[AsyncEngine]
     ) -> async_sessionmaker[AsyncSession]:
         return async_sessionmaker(bind=engine, expire_on_commit=False)
 
     @provide(scope=Scope.REQUEST)
     async def provide_session(
-            self,
-            session_maker: FromDishka[async_sessionmaker[AsyncSession]]
+        self, session_maker: FromDishka[async_sessionmaker[AsyncSession]]
     ) -> AsyncIterable[AsyncSession]:
         async with session_maker() as session:
             yield session

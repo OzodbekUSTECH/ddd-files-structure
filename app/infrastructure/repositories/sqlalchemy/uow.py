@@ -1,5 +1,6 @@
 from sqlalchemy.ext.asyncio import AsyncSession
-from app.domain.protocols.uow import IUnitOfWork
+
+from app.domain.protocols.repositories.uow import IUnitOfWork
 
 
 class SqlalchemyUnitOfWork(IUnitOfWork):
