@@ -16,7 +16,7 @@ async def lifespan(app: FastAPI):
     await app.state.dishka_container.close()
 
 
-app = FastAPI(title="KIUT STORAGE MICROSERVICE", lifespan=lifespan)
+app = FastAPI(title="KIUT ACCOUNTING MICROSERVICE", lifespan=lifespan)
 
 app.mount("/app/media", StaticFiles(directory="./app/media"), name="media")
 
