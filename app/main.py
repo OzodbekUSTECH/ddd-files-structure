@@ -25,6 +25,6 @@ for router in all_routers:
     app.include_router(router, prefix=settings.api_prefix)
 
 container = make_async_container(
-    di.AdaptersProvider(), di.RepositoriesProvider(), di.ServicesProvider()
+    di.AdaptersProvider(), di.RepositoriesProvider(), di.InteractorsProvider()
 )
 setup_dishka(container, app)

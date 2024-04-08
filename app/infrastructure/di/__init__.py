@@ -1,3 +1,3 @@
 from app.infrastructure.di.adapters_provider import AdaptersProvider
 from app.infrastructure.di.repositories_provider import RepositoriesProvider
-from app.infrastructure.di.services_provider import ServicesProvider
+from app.infrastructure.di.interactors_provider import InteractorsProvider
